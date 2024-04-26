@@ -11,7 +11,7 @@ funcao menu (){
 	escreva("|3 - Atualizar livros|\n")
 	escreva("|4 - Remover livros  |\n")
 	escreva("|5 - Sair            |\n")
-	escreva("•-=-_-=-_-•-_-=-_-=-•\n")
+	escreva("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n")
 	leia(opcao)
 }
 
