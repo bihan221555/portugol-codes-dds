@@ -16,7 +16,7 @@ funcao menu (){
 }
 
 funcao adicionarLivro(){
-	se(posicao>=101){
+	se(posicao>=100){
 		escreva("Você já adicionou o máximo de livros!\n")
 	}
 	senao{
