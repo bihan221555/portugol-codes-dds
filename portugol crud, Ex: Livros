@@ -1,0 +1,110 @@
+programa
+{
+cadeia livro[100], autor[100]
+inteiro ano[100]
+inteiro opcao = 0, posicao = 0
+
+funcao menu (){
+	escreva("_-•Digite uma opção•-_\n")
+	escreva("|1 - Adicionar livros|\n")
+	escreva("|2 - Buscar livros   |\n")
+	escreva("|3 - Atualizar livros|\n")
+	escreva("|4 - Remover livros  |\n")
+	escreva("|5 - Sair            |\n")
+	escreva("•-=-_-=-_-•-_-=-_-=-•\n")
+	leia(opcao)
+}
+
+funcao adicionarLivro(){
+	se(posicao>=101){
+		escreva("Você já adicionou o máximo de livros!\n")
+	}
+	senao{
+	escreva("Escreva o nome do livro:\n")
+	leia(livro[posicao])
+	escreva("Escreva o nome do autor:\n")
+	leia(autor[posicao])
+	escreva("Escreva o ano em que o livro foi publicado:\n")
+	leia(ano[posicao])
+	posicao++
+	limpa()
+	}
+}
+
+funcao buscarLivro(){
+	inteiro posicaoBusca
+	escreva("Qual o ID do livro?\n")
+	leia(posicaoBusca)
+	
+	se(posicaoBusca < posicao){
+	escreva("Nome: "+livro[posicaoBusca]+"\n")
+	escreva("Autor: "+autor[posicaoBusca]+"\n")
+	escreva("Ano: "+ano[posicaoBusca]+"\n")
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+	}
+}
+
+funcao atualizarLivro(){
+	inteiro posicaoBusca
+	escreva("Qual o ID do livro?\n")
+	leia(posicaoBusca)
+
+	se(posicaoBusca < posicao){
+	escreva("Dados Atuais\n")
+	escreva("Nome: "+livro[posicaoBusca]+"\n")
+	escreva("Autor: "+autor[posicaoBusca]+"\n")
+	escreva("Ano: "+ano[posicaoBusca]+"\n")
+
+	escreva("nome: \n")
+	leia(livro[posicaoBusca])
+	escreva("autor:\n")
+	leia(autor[posicaoBusca])
+	escreva("ano:\n")
+	leia(ano[posicaoBusca])
+	limpa()
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+	}
+}
+
+funcao removerLivro(){
+	inteiro posicaoBusca, remover
+
+	escreva("Qual o ID do livro?\n")
+	leia(posicaoBusca)
+
+	se(posicaoBusca < posicao){
+	livro[posicaoBusca] = ""
+	autor[posicaoBusca] = ""
+	ano[posicaoBusca] = 0
+	limpa()
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+	}
+}
+
+funcao inicio(){
+	menu()
+
+	enquanto(opcao!=5){
+		se(opcao==1){
+			adicionarLivro()
+		}
+		se(opcao==2){
+			buscarLivro()
+		}
+		se(opcao==3){
+			atualizarLivro()
+		}
+		se(opcao==4){
+			removerLivro()
+		}
+		menu()
+	
+	}
+}
+}
