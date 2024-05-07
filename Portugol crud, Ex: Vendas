@@ -1,0 +1,155 @@
+programa
+{
+cadeia venda[100], data[100], vendedor[100], comparaVendedor, comparaData
+real valor[100]
+inteiro opcao = 0, quantVendas = 0, posicaoBusca, decisao = 0
+
+funcao menuTotal(){
+			escreva("_-•Digite uma opção para checar•-_\n")
+			escreva("|1 - Total de vendas por vendedor|\n")
+			escreva("|2 - Total de vendas por data    |\n")
+			escreva("|3 - Sair                        |\n")
+			escreva("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n")   
+			leia(decisao)
+}
+funcao menu (){
+	escreva("_-•Digite uma opção•-_\n")
+	escreva("|1 - Adicionar vendas|\n")
+	escreva("|2 - Buscar vendas   |\n")
+	escreva("|3 - Atualizar vendas|\n")
+	escreva("|4 - Remover vendas  |\n")
+	escreva("|5 - Checar totais   |\n")
+	escreva("|6 - Sair            |\n")
+	escreva("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n")
+	leia(opcao)
+}
+
+funcao totalVendedor(){
+	inteiro resultado = 0
+		escreva("Qual o nome do Vendedor?\n")
+		leia(comparaVendedor)
+		para(inteiro i = 0;i<quantVendas;i++)
+			se(comparaVendedor == vendedor[i]){
+				resultado++
+			}
+		escreva(comparaVendedor +" fez " +resultado +" vendas\n")
+		menu()
+}
+
+funcao totalData(){
+	inteiro resultado = 0
+		escreva("Qual a data das Vendas?\n")
+		leia(comparaData)
+		para(inteiro i = 0;i<quantVendas;i++)
+			se(comparaData == data[i]){
+				resultado++
+			}
+		escreva("Teve " +resultado +" vendas na data " +comparaData+"\n")
+		menu()
+}
+
+funcao adicionarVenda(){
+	se(quantVendas>=100){
+		escreva("Você já adicionou o máximo de Vendas!\n")
+	}
+	senao{
+	escreva("Escreva o nome do vendedor:\n")
+	leia(vendedor[quantVendas])
+	escreva("Escreva o valor:\n")
+	leia(valor[quantVendas])
+	escreva("Escreva a data:\n")
+	leia(data[quantVendas])
+	quantVendas++
+	limpa()
+	}
+}
+
+funcao buscarVenda(){
+	escreva("Qual o ID da venda?\n")
+	leia(posicaoBusca)
+	
+	se(posicaoBusca < quantVendas){
+	escreva("Vendedor: "+vendedor[posicaoBusca]+"\n")
+	escreva("Valor: "+valor[posicaoBusca]+"\n")
+	escreva("Data: "+data[posicaoBusca]+"\n")
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+	}
+}
+
+funcao atualizarVenda(){
+	escreva("Qual o ID da venda?\n")
+	leia(posicaoBusca)
+
+	se(posicaoBusca < quantVendas){
+	escreva("Dados Atuais\n")
+	escreva("Vendedor: "+vendedor[posicaoBusca]+"\n")
+	escreva("Valor: "+valor[posicaoBusca]+"\n")
+	escreva("Data: "+data[posicaoBusca]+"\n")
+
+	escreva("Vendedor:\n")
+	leia(vendedor[posicaoBusca])
+	escreva("Valor:\n")
+	leia(valor[posicaoBusca])
+	escreva("Data:\n")
+	leia(data[posicaoBusca])
+	limpa()
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+	}
+}
+
+funcao removerVenda(){
+	inteiro remover
+
+	escreva("Qual o ID da venda?\n")
+	leia(posicaoBusca)
+
+	se(posicaoBusca < quantVendas){
+	vendedor[posicaoBusca] = ""
+	valor[posicaoBusca] = 0.0
+	data[posicaoBusca] = ""
+	limpa()
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+	}
+}
+
+funcao inicio(){
+	menu()
+
+	enquanto(opcao!=6){
+		se(opcao==1){
+			adicionarVenda()
+		}
+		se(opcao==2){
+			buscarVenda()
+		}
+		se(opcao==3){
+			atualizarVenda()
+		}
+		se(opcao==4){
+			removerVenda()
+		}
+		se(opcao==5){
+			menuTotal()
+			enquanto(decisao!=3){
+				se(decisao==1){
+					totalVendedor()
+					menuTotal()
+				}
+				se(decisao==2){
+					totalData()
+					menuTotal()
+				}
+			}
+		}
+		menu()
+		limpa()
+	
+	}
+}
+}
