@@ -7,10 +7,11 @@ programa
 	inteiro op = 0, cadastro = 0
 
 	funcao menu(){
-		escreva("-Digite uma opção-\n")
-		escreva("|1 - Cadastro    |\n")
-		escreva("|2 - Login       |\n")
-		escreva("|3 - Sair        |\n")
+		escreva("_-•Digite uma opção•-_\n")
+		escreva("|1 - Cadastro        |\n")
+		escreva("|2 - Login           |\n")
+		escreva("|3 - Sair            |\n")
+		escreva("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n")
 		leia(op)
 		limpa()
 	}
