@@ -127,7 +127,7 @@ programa
 				escreva("Você é um ADM (visão de adm)\n")
 			}
 			enquanto(logou == falso){
-			menu()
+			inicio()
 			}
 		}	
 		se(op == 3){
