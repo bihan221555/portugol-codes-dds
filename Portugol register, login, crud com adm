@@ -1,0 +1,158 @@
+programa
+{
+	cadeia nomeUsur, senhaUsur, nomeCad[100], senhaCad[100] 
+	logico logou = falso, adm = falso
+	inteiro op = 0, opadm = 0, posicao = 1
+
+	funcao menu(){
+		se(adm == verdadeiro){
+		escreva("_-•Digite uma opção•-_\n")
+		escreva("|1 - Sair            |\n")
+		escreva("|2 - Login           |\n")
+		escreva("|3 - Registro        |\n")
+		escreva("|4 - ADM             |\n")
+		escreva("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n")
+		leia(op)
+		limpa()
+		}
+		senao{
+		escreva("_-•Digite uma opção•-_\n")
+		escreva("|1 - Sair            |\n")
+		escreva("|2 - Login           |\n")
+		escreva("|3 - Registro        |\n")
+		escreva("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n")
+		leia(op)
+		limpa()
+		}
+	}
+
+	funcao menuAdm(){
+	escreva(" _-•Digite uma opção•-_\n")
+	escreva("|1 - Adicionar Usuários|\n")
+	escreva("|2 - Buscar Usuários   |\n")
+	escreva("|3 - Atualizar Usuário |\n")
+	escreva("|4 - Remover Usuários  |\n")
+	escreva("|5 - Sair              |\n")
+	escreva("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\n")
+	leia(opadm)
+	}
+
+	funcao buscarUsuario(){
+	inteiro posicaoBusca
+	escreva("Qual o ID do Usuário?\n")
+	leia(posicaoBusca)
+	
+	se(posicaoBusca < posicao){
+	escreva("Usuário: "+nomeCad[posicaoBusca]+"\n")
+	escreva("Senha: "+senhaCad[posicaoBusca]+"\n")
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+		}
+	}
+
+	funcao atualizarUsuario(){
+	inteiro posicaoBusca
+	escreva("Qual o ID do Usuário?\n")
+	leia(posicaoBusca)
+
+	se(posicaoBusca < posicao){
+	escreva("Dados Atuais\n")
+	escreva("Usuário: "+nomeCad[posicaoBusca]+"\n")
+	escreva("Senha: "+senhaCad[posicaoBusca]+"\n")
+	
+	escreva("Usuário: \n")
+	leia(nomeCad[posicaoBusca])
+	escreva("Senha:\n")
+	leia(senhaCad[posicaoBusca])
+	limpa()
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+		}
+	}
+	
+	funcao removerUsuario(){
+	inteiro posicaoBusca, remover
+
+	escreva("Qual o ID do Usuário?\n")
+	leia(posicaoBusca)
+
+	se(posicaoBusca < posicao){
+	nomeCad[posicaoBusca] = ""
+	senhaCad[posicaoBusca] = ""
+	limpa()
+	}
+	senao{
+		escreva("ID Inválido ou inexistente!\n")
+		}
+	}
+	
+	funcao registro(){
+		escreva("-CADASTRO-\n")
+		escreva("Usuário:\n")
+		leia(nomeCad[posicao])
+		escreva("Senha:\n")
+		leia(senhaCad[posicao])
+		posicao++
+	}
+
+	funcao login(){
+		adm = falso
+		escreva("-LOGIN-\n")
+		escreva("Usuário cadastrado:\n")
+		leia(nomeUsur)
+		escreva("Senha cadastrada:\n")
+		leia(senhaUsur)
+		para(inteiro i = 0; i<=99; i++){
+			se(nomeUsur == nomeCad[i] e senhaUsur == senhaCad[i]){
+		escreva("Dados Corretos, Bem vindo, "+nomeCad[i]+"!\n\n")
+		logou = verdadeiro
+		}
+		}
+		se(logou == falso){
+			escreva("Dados inválidos ou incorretos, cadastre ou tente novamente\n\n")
+		}
+	}
+	
+	funcao inicio(){
+		nomeCad[0]  = "adm"
+		senhaCad[0] = "123"
+		menu()
+		enquanto(op>1){
+		se(op == 2){
+			login()
+			se(nomeUsur == nomeCad[0] e senhaUsur == senhaCad[0]){
+				adm = verdadeiro
+				escreva("Você é um ADM (visão de adm)\n")
+			}
+			enquanto(logou == falso){
+			menu()
+			}
+		}	
+		se(op == 3){
+			registro()
+		
+			}	
+		se(op == 4 e adm == verdadeiro){
+			menuAdm()
+			enquanto(opadm<5 e adm == verdadeiro){
+				se(opadm == 1){
+					registro()
+				}
+				se(opadm == 2){
+					buscarUsuario()
+				}
+				se(opadm == 3){
+					atualizarUsuario()
+				}
+				se(opadm== 4){
+					removerUsuario()
+				}
+				menuAdm()
+			}
+		}
+		menu()
+		}
+	}
+}
