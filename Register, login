@@ -1,0 +1,59 @@
+programa
+{
+	cadeia nomeUsur, senhaUsur
+	cadeia nomeCad[100]
+	cadeia senhaCad[100]
+	logico logou = falso
+	inteiro op = 0, cadastro = 0
+
+	funcao menu(){
+		escreva("-Digite uma opção-\n")
+		escreva("|1 - Cadastro    |\n")
+		escreva("|2 - Login       |\n")
+		escreva("|3 - Sair        |\n")
+		leia(op)
+		limpa()
+	}
+	
+	funcao registro(){
+		escreva("-CADASTRO-\n")
+		escreva("Usuário:\n")
+		leia(nomeCad[cadastro])
+		escreva("Senha:\n")
+		leia(senhaCad[cadastro])
+		cadastro++
+	}
+
+	funcao login(){
+		escreva("-LOGIN-\n")
+		escreva("Usuário cadastrado:\n")
+		leia(nomeUsur)
+		escreva("Senha cadastrada:\n")
+		leia(senhaUsur)
+		para(inteiro i = 0; i<=99; i++){
+			se(nomeUsur == nomeCad[i] e senhaUsur == senhaCad[i]){
+		escreva("Dados Corretos, Bem vindo, "+nomeCad[i]+"!\n\n")
+		logou = verdadeiro
+		}
+		}
+		se(logou == falso){
+			escreva("Dados inválidos ou incorretos, cadastre ou tente novamente\n\n")
+		}
+	}
+	
+	funcao inicio(){
+		menu()
+		enquanto(op<3){
+		se(op == 1){
+			registro()
+		}
+		se(op == 2){
+			login()
+			enquanto(logou == falso){
+			menu()
+			}	
+		}
+		menu()
+		}
+	}
+}
